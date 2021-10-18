@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title> Student Portal</title>
+{% endblock %}
+
+{% block portal_active %}
+class="active"
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid portal-form">
+        <h1>Student Portal Form</h1>
+        <p><i>Please fill in all required information</i></p>
+        <h2>Personal Information</h2>
+        
+        <form class="form-horizontal">
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="profile-photo" class="control-label">Upload Image:</label><br>
+                    <input type="file" class="form-control" name="profile-photo" id="profile-photo" accept="image/*" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">  
+                    <label for="first-name" class="control-label">First Name:</label><br>
+                    <input type="text" class="form-control" id="first-name" placeholder="Enter first name" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="middle-name" class="control-label">Middle Name:</label><br>
+                    <input type="text" class="form-control" id="middle-name" placeholder="Enter middle name" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">  
+                    <label for="last-name" class="control-label">Last Name:</label><br>
+                    <input type="text" class="form-control" id="last-name" placeholder="Enter last name" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="email" class="control-label">Email:</label><br>
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">  
+                    <label for="date-of-birth" class="control-label">Date Of Birth:</label><br>
+                    <input type="date" class="form-control" id="date-of-birth" required>
+                </div>
+
+                <div class="col-md-6">
+                    <br><br>
+                    <div class="radio">
+                        <label for="gender">
+                            <input type="radio" name="gender" id="male" value="male" required>Male
+                        </label>
+
+                        <label for="gender">
+                            <input type="radio" name="gender" id="female" value="female" required>Female
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">  
+                    <label for="phone" class="control-label">Phone Number:</label><br>
+                    <input type="tel" class="form-control" id="phone-number" placeholder="Enter Phone number" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="address" class="control-label">Address:</label><br>
+                    <textarea class="form-control" placeholder="Enter Address" required></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">  
+                    <label for="state" class="control-label">State of Origin:</label><br>
+                    <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="local-government" class="control-label">Local Government:</label><br>
+                    <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">  
+                    <label for="nextOfKin" class="control-label">next-of-kin:</label><br>
+                    <input type="text" class="form-control" id="nextOfKin" placeholder="Enter the name of Next Of Kin:" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-12">  
+                    <h2>Academic Related Information</h2>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="jambScore" class="control-label">Jamb Score:</label><br>
+                    <input type="number" class="form-control" id="jambScore" placeholder="Enter your Jamb Score:" required>
+                </div>
+            </div>
+
+            <div >
+            <button type="submit" class="btn submit">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
