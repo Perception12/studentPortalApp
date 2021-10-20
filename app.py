@@ -16,9 +16,6 @@ mysql = MySQL(app, cursorclass=pymysql.cursors.DictCursor)
 
 
 
-#  # if state_lg[n]["state"] == "Abia":
-#         #     print(state_lg[n]["local"])    
-
 # conn = mysql.get_db()
 # curr = conn.cursor()
 # curr.execute()
@@ -45,6 +42,32 @@ def portal():
 
         return render_template('portal.html', states=states, state_lg = state_lg, n=n)
 
+
+@app.route('/student/add')
+def add_student():
+    req = request.get_json()
+
+    firstName = req['firstName']
+    middleName = req['middleName']
+    lastName = req['lastName']
+    email = req['email']
+    dateOfBirth = req['dateOfBirth']
+    gender = req['gender']
+    phoneNumber = req['phoneNumber']
+    address = req['address']
+    state = req['state']
+    localGovernment = req['localGovernment']
+    nextOfKin = req['nextOfKin']
+    jambScore = req['jambScore']
+    email = req['email']
+
+    conn = mysql.get_db()
+    curr = conn.cursor()
+    curr.execute(f'INSERT INTO student (firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, address, stateOfOrigin, localGovernment, nextOfKin, jambScore, email) VALUES ({firstName}, {middleName}, {lastName}, {dateOfBirth}, {gender}, {phoneNumber}, {address}, {state}, {localGovernment}, {nextOfKin}, {jambScore}, {email});')
+    conn.commit()
+    curr.close()
+
+    return json.dumps('success')
 
 @app.route('/dashboard')
 def dashboard():
