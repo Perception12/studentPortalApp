@@ -12,3 +12,13 @@ function stateSelect(){
     }
 }
 
+// GENDER SELECTION
+
+var gender;
+function selectMaleGender(){
+    gender = document.querySelector('#male').value;
+}
+
+function selectFemaleGender(){
+    gender = document.querySelector('#female').value;
+}
