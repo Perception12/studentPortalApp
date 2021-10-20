@@ -99,9 +99,15 @@ html {
   }
 
   .submit {
-    padding: 10px 100px;
+    padding: 10px 150px;
     background-color: #343252;
     color: white;
+  }
+
+  .submit:hover {
+    background-color:white;
+    color:#343252;
+    border-color: #343252;
   }
   
 

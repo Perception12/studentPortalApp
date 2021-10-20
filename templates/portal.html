@@ -56,11 +56,11 @@ class="active"
                     <br><br>
                     <div class="radio">
                         <label for="gender">
-                            <input type="radio" name="gender" id="male" value="male" required>Male
+                            <input onclick="selectMaleGender()" type="radio" name="gender" id="male" value="male" required>Male
                         </label>
 
                         <label for="gender">
-                            <input type="radio" name="gender" id="female" value="female" required>Female
+                            <input onclick="selectFemaleGender()" type="radio" name="gender" id="female" value="female" required>Female
                         </label>
                     </div>
                 </div>
@@ -81,24 +81,29 @@ class="active"
             <div class="form-group row">
                 <div class="col-md-6">  
                     <label for="state" class="control-label">State of Origin:</label><br>
-                    <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <select onchange="stateSelect()" id="state-select" class=" form-control">
+                        <option value=""></option>
+                        {% for state in states %}
+                        <option value = "{{ state }}"> {{ state }} </option>
+                        {% endfor %}
                       </select>
                 </div>
 
                 <div class="col-md-6">
                     <label for="local-government" class="control-label">Local Government:</label><br>
-                    <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
+                    
+                    <select id="lga" class="form-control">
+                        <option value=""></option>
+                        {% for state in states%}
+                        {% for i in range(n)%}
+                        {% if state_lg[i]["state"] == state %}
+                        {% for localGovernment in state_lg[i]["local"] %}
+                        <option value="{{ state }}" style="display: none;">{{ localGovernment }}</option>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                    </select>
                 </div>
             </div>
 
@@ -118,10 +123,12 @@ class="active"
                     <label for="jambScore" class="control-label">Jamb Score:</label><br>
                     <input type="number" class="form-control" id="jambScore" placeholder="Enter your Jamb Score:" required>
                 </div>
-            </div>
+            </div><br><br>
 
-            <div >
-            <button type="submit" class="btn submit">Submit</button>
+            <div class="row">
+                <div  class="col-sm-offset-4 col-sm-6">
+                    <button type="submit" class="btn submit">Submit</button>
+                </div>
             </div>
         </form>
     </div>
