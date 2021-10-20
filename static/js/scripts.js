@@ -12,13 +12,13 @@ function stateSelect(){
     }
 }
 
-// GENDER SELECTION
 
-var gender;
-function selectMaleGender(){
-    gender = document.querySelector('#male').value;
-}
+// PORTAL FORM SUBMIT FUNCTION
+function submitForm(){
+    let firstName = $('#first-name').val();
+    let middleName = $('#middle-name').val();
+    let lastName = $('#last-name').val();
+    let email = $('#email').val();
+    let dateOfBirth = $('#dateOfBirth').val();
 
-function selectFemaleGender(){
-    gender = document.querySelector('#female').value;
 }

@@ -14,7 +14,7 @@ class="active"
         <p><i>Please fill in all required information</i></p>
         <h2>Personal Information</h2>
         
-        <form class="form-horizontal">
+        <form  action="javascript:0" method="POST" onsubmit="submitForm()" class="form-horizontal" id="form" >
             <div class="form-group row">
                 <div class="col-md-6">
                     <label for="profile-photo" class="control-label">Upload Image:</label><br>
@@ -48,19 +48,19 @@ class="active"
 
             <div class="form-group row">
                 <div class="col-md-6">  
-                    <label for="date-of-birth" class="control-label">Date Of Birth:</label><br>
-                    <input type="date" class="form-control" id="date-of-birth" required>
+                    <label for="dateOfBirth" class="control-label">Date Of Birth:</label><br>
+                    <input type="date" class="form-control" id="dateOfBirth" required>
                 </div>
 
                 <div class="col-md-6">
                     <br><br>
                     <div class="radio">
                         <label for="gender">
-                            <input onclick="selectMaleGender()" type="radio" name="gender" id="male" value="male" required>Male
+                            <input type="radio" name="gender" id="male" value="male" required>Male
                         </label>
 
                         <label for="gender">
-                            <input onclick="selectFemaleGender()" type="radio" name="gender" id="female" value="female" required>Female
+                            <input type="radio" name="gender" id="female" value="female" required>Female
                         </label>
                     </div>
                 </div>
