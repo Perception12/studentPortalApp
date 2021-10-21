@@ -81,7 +81,7 @@ class="active"
             <div class="form-group row">
                 <div class="col-md-6">  
                     <label for="state" class="control-label">State of Origin:</label><br>
-                    <select onchange="stateSelect()" id="state-select" class=" form-control">
+                    <select id="state-select" class=" form-control">
                         <option value=""></option>
                         {% for state in states %}
                         <option value = "{{ state }}"> {{ state }} </option>
