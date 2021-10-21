@@ -77,22 +77,22 @@ html {
 
   /* Portal */
  
-  .portal-form {
+  .portal{
     padding: 20px;
     margin: 20px 100px;
     background-color: #ccddff;
   }
 
-  .portal-form > h1 {
+  .portal> h1 {
     text-align: center;
   }
 
-  .portal-form > p {
+  .portal> p {
     color: red;
     margin-bottom: 0;
   }
 
-  .portal-form h2 {
+  .portalh2 {
     background-color: #343252;
     color: white;
     padding: 5px;

@@ -1,23 +1,8 @@
 var formController = (function(){
-
     // FORM ELEMENT VALUE SELECTOR
     function selectValue(id) {
         return document.querySelector(id).value;
     }
-
-    // FORM INPUTS
-    let gender;
-    let firstName = selectValue('#first-name');
-    let middleName = selectValue('#middle-name');
-    let lastName = selectValue('#last-name');
-    let email = selectValue('#email');
-    let dateOfBirth = selectValue('#dateOfBirth');
-    let phoneNumber = selectValue('#phone-number');
-    let address = selectValue('#address');
-    let state = selectValue('#state-select');
-    let localGovernment = selectValue('#lga');
-    let nextOfKin = selectValue('#nextOfKin');
-    let jambScore = selectValue('#jambScore');
 
     // DYNAMIC SELECTION
     document.querySelector('#state-select').addEventListener('change', function(){
@@ -33,26 +18,30 @@ var formController = (function(){
     });
 
     //GENDER SELECTION
-    document.querySelector('#male').addEventListener('click', get_gender);
-    document.querySelector('#female').addEventListener('click', get_gender);
+    let gender;
+    document.querySelector('#male').addEventListener('click', getGenderValue);
+    document.querySelector('#female').addEventListener('click', getGenderValue);
 
-    function get_gender(){
+    function getGenderValue(){
         gender = this.value;
     }
 
+    // PORTAL FORM SUBMIT FUNCTION
+    $('#portal-form').submit(function(){
 
+        // SELECT INPUT VALUES
+        let firstName = selectValue('#first-name');
+        let middleName = selectValue('#middle-name');
+        let lastName = selectValue('#last-name');
+        let email = selectValue('#email');
+        let dateOfBirth = selectValue('#date-of-birth');
+        let phoneNumber = selectValue('#phone-number');
+        let address = selectValue('#address');
+        let state = selectValue('#state-select');
+        let localGovernment = selectValue('#lga');
+        let nextOfKin = selectValue('#nextOfKin');
+        let jambScore = selectValue('#jambScore');
 
-    return {
-        get_inputs: function(){
-            console.log(firstName);
-        }
-    }
-})();
-
-
-// PORTAL FORM SUBMIT FUNCTION
-var submitController = (function(formCtrl){
-    function submitForm(){
         $.ajax({
             url: '/student/add',
             type: 'POST',
@@ -79,7 +68,11 @@ var submitController = (function(formCtrl){
                 console.log(err);
             }
         });
-    }
-    
+    });
 })();
+
+
+
+    
+
 
