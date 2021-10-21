@@ -41,39 +41,45 @@ var formController = (function(){
     }
 
 
+
+    return {
+        get_inputs: function(){
+            console.log(firstName);
+        }
+    }
 })();
 
 
 // PORTAL FORM SUBMIT FUNCTION
+var submitController = (function(formCtrl){
+    function submitForm(){
+        $.ajax({
+            url: '/student/add',
+            type: 'POST',
+            dataType: 'json',
+            data: JSON.stringify({
+                'firstName': firstName,
+                'middleName': middleName,
+                'lastName': lastName,
+                'email': email,
+                'dateOfBirth': dateOfBirth,
+                'gender': gender,
+                'phoneNumber': phoneNumber,
+                'address': address,
+                'state': state,
+                'localGovernment': localGovernment,
+                'nextOfKin': nextOfKin,
+                'jambScore': jambScore
+            }),
+            contentType: 'application/json, charset=UTF-8',
+            success: function(data) {
+                location.reload();
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    }
+    
+})();
 
-
-
-
-function submitForm(){
-    $.ajax({
-        url: '/student/add',
-        type: 'POST',
-        dataType: 'json',
-        data: JSON.stringify({
-            'firstName': firstName,
-            'middleName': middleName,
-            'lastName': lastName,
-            'email': email,
-            'dateOfBirth': dateOfBirth,
-            'gender': gender,
-            'phoneNumber': phoneNumber,
-            'address': address,
-            'state': state,
-            'localGovernment': localGovernment,
-            'nextOfKin': nextOfKin,
-            'jambScore': jambScore
-        }),
-        contentType: 'application/json, charset=UTF-8',
-        success: function(data) {
-            location.reload();
-        },
-        error: function(err) {
-            console.log(err);
-        }
-    });
-}
