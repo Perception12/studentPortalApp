@@ -14,9 +14,13 @@ app.config['MYSQL_DATABASE_PASSWORD'] = '$Eunfunmi2021'
 
 mysql = MySQL(app, cursorclass=pymysql.cursors.DictCursor)
 
+
+
 @app.route('/')
 def index():
      return render_template('index.html')
+
+
 
 
 @app.route('/student/portal')
@@ -34,10 +38,13 @@ def portal():
         return render_template('portal.html', states=states, state_lg = state_lg, n=n)
 
 
-@app.route('/student/add')
+
+# RECIEVES USER INPUT AND STORES IT IN THE DATABASE
+@app.route('/student/add', methods=['POST'])
 def add_student():
     req = request.get_json()
 
+    print(req)
     firstName = req['firstName']
     middleName = req['middleName']
     lastName = req['lastName']
@@ -52,18 +59,24 @@ def add_student():
     jambScore = req['jambScore']
     email = req['email']
 
-    print(firstName)
+    # QUERY DATABASE
+    
     # conn = mysql.get_db()
     # curr = conn.cursor()
-    # curr.execute(f'INSERT INTO student (firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, address, stateOfOrigin, localGovernment, nextOfKin, jambScore, email) VALUES ({firstName}, {middleName}, {lastName}, {dateOfBirth}, {gender}, {phoneNumber}, {address}, {state}, {localGovernment}, {nextOfKin}, {jambScore}, {email});')
+    # curr.execute("INSERT INTO student (firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, address, stateOfOrigin, localGovernment, nextOfKin, jambScore, email)" +
+    # f" VALUES ('{firstName}', '{middleName}', '{lastName}', '{dateOfBirth}', '{gender}', '{phoneNumber}', '{address}', '{state}', '{localGovernment}', '{nextOfKin}', {jambScore}, '{email}');")
     # conn.commit()
     # curr.close()
 
     return json.dumps('success')
 
+
+
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+
+
 
 @app.route('/students/<id>')
 def students(id):
