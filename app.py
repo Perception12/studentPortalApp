@@ -53,7 +53,6 @@ def add_student():
     email = req['email']
 
     print(firstName)
-
     # conn = mysql.get_db()
     # curr = conn.cursor()
     # curr.execute(f'INSERT INTO student (firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, address, stateOfOrigin, localGovernment, nextOfKin, jambScore, email) VALUES ({firstName}, {middleName}, {lastName}, {dateOfBirth}, {gender}, {phoneNumber}, {address}, {state}, {localGovernment}, {nextOfKin}, {jambScore}, {email});')
@@ -70,6 +69,7 @@ def dashboard():
 def students(id):
     id_number = id
     return render_template('students.html', id_number = id_number)
+
 
 
 if __name__ == "__main__":

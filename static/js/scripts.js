@@ -1,6 +1,6 @@
 var formController = (function(){
     // DYNAMIC SELECTION
-    document.querySelector('#state-select').addEventListener('change', function(){
+    document.querySelector('#state-select').addEventListener('change', () => {
         let stateValue = this.value;
         let options = document.querySelector('#lga').children;
         for(let i = 0; i < options.length; i++){
@@ -22,7 +22,14 @@ var formController = (function(){
     }
 
     // PORTAL FORM SUBMIT FUNCTION
-    $('#portal-form').submit(function(){
+    $('#portal-form').submit(() => {
+
+        // FORM ELEMENT VALUE SELECTOR
+        function selectValue(id) {
+            return document.querySelector(id).value;
+        }
+
+        console.log("This works");
 
         // FORM ELEMENT VALUE SELECTOR
         function selectValue(id) {
@@ -66,7 +73,7 @@ var formController = (function(){
             success: function(data){
                 location.reload();
             },
-            error: function(err) {
+            error: err => {
                 console.log(err);
             }
         });
