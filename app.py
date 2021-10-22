@@ -61,12 +61,12 @@ def add_student():
 
     # QUERY DATABASE
     
-    # conn = mysql.get_db()
-    # curr = conn.cursor()
-    # curr.execute("INSERT INTO student (firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, address, stateOfOrigin, localGovernment, nextOfKin, jambScore, email)" +
-    # f" VALUES ('{firstName}', '{middleName}', '{lastName}', '{dateOfBirth}', '{gender}', '{phoneNumber}', '{address}', '{state}', '{localGovernment}', '{nextOfKin}', {jambScore}, '{email}');")
-    # conn.commit()
-    # curr.close()
+    conn = mysql.get_db()
+    curr = conn.cursor()
+    curr.execute("INSERT INTO student (firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, address, stateOfOrigin, localGovernment, nextOfKin, jambScore, email)" +
+    f" VALUES ('{firstName}', '{middleName}', '{lastName}', '{dateOfBirth}', '{gender}', '{phoneNumber}', '{address}', '{state}', '{localGovernment}', '{nextOfKin}', {jambScore}, '{email}');")
+    conn.commit()
+    curr.close()
 
     return json.dumps('success')
 
