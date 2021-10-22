@@ -1,9 +1,4 @@
 var formController = (function(){
-    // FORM ELEMENT VALUE SELECTOR
-    function selectValue(id) {
-        return document.querySelector(id).value;
-    }
-
     // DYNAMIC SELECTION
     document.querySelector('#state-select').addEventListener('change', function(){
         let stateValue = this.value;
@@ -19,15 +14,22 @@ var formController = (function(){
 
     //GENDER SELECTION
     let gender;
-    document.querySelector('#male').addEventListener('click', getGenderValue);
-    document.querySelector('#female').addEventListener('click', getGenderValue);
+    document.querySelector('#male').addEventListener('click', selectGender);
+    document.querySelector('#female').addEventListener('click', selectGender);
 
-    function getGenderValue(){
+    function selectGender() {
         gender = this.value;
     }
 
     // PORTAL FORM SUBMIT FUNCTION
     $('#portal-form').submit(function(){
+
+        // FORM ELEMENT VALUE SELECTOR
+        function selectValue(id) {
+            return document.querySelector(id).value;
+        }
+
+        console.log("This works");
 
         // SELECT INPUT VALUES
         let firstName = selectValue('#first-name');
@@ -61,7 +63,7 @@ var formController = (function(){
                 'jambScore': jambScore
             }),
             contentType: 'application/json, charset=UTF-8',
-            success: function(data) {
+            success: function(data){
                 location.reload();
             },
             error: function(err) {

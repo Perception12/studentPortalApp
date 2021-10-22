@@ -14,15 +14,6 @@ app.config['MYSQL_DATABASE_PASSWORD'] = '$Eunfunmi2021'
 
 mysql = MySQL(app, cursorclass=pymysql.cursors.DictCursor)
 
-
-
-# conn = mysql.get_db()
-# curr = conn.cursor()
-# curr.execute()
-# conn.commit()
-# curr.close()
-
-
 @app.route('/')
 def index():
      return render_template('index.html')
@@ -61,11 +52,13 @@ def add_student():
     jambScore = req['jambScore']
     email = req['email']
 
-    conn = mysql.get_db()
-    curr = conn.cursor()
-    curr.execute(f'INSERT INTO student (firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, address, stateOfOrigin, localGovernment, nextOfKin, jambScore, email) VALUES ({firstName}, {middleName}, {lastName}, {dateOfBirth}, {gender}, {phoneNumber}, {address}, {state}, {localGovernment}, {nextOfKin}, {jambScore}, {email});')
-    conn.commit()
-    curr.close()
+    print(firstName)
+
+    # conn = mysql.get_db()
+    # curr = conn.cursor()
+    # curr.execute(f'INSERT INTO student (firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, address, stateOfOrigin, localGovernment, nextOfKin, jambScore, email) VALUES ({firstName}, {middleName}, {lastName}, {dateOfBirth}, {gender}, {phoneNumber}, {address}, {state}, {localGovernment}, {nextOfKin}, {jambScore}, {email});')
+    # conn.commit()
+    # curr.close()
 
     return json.dumps('success')
 
