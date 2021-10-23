@@ -1,8 +1,9 @@
-from flask import Flask, render_template, url_for, request, flash
+from flask import Flask, render_template, url_for, request, flash, current_app
 from flaskext.mysql import MySQL
 import pymysql.cursors
 import datetime
 import json
+import os
 
 
 app = Flask(__name__)
@@ -19,7 +20,6 @@ mysql = MySQL(app, cursorclass=pymysql.cursors.DictCursor)
 @app.route('/')
 def index():
      return render_template('index.html')
-
 
 
 
@@ -44,7 +44,6 @@ def portal():
 def add_student():
     req = request.get_json()
 
-    print(req)
     firstName = req['firstName']
     middleName = req['middleName']
     lastName = req['lastName']
@@ -57,7 +56,6 @@ def add_student():
     localGovernment = req['localGovernment']
     nextOfKin = req['nextOfKin']
     jambScore = req['jambScore']
-    email = req['email']
 
     # QUERY DATABASE
     
@@ -70,6 +68,18 @@ def add_student():
 
     return json.dumps('success')
 
+
+@app.route('/student/photo', methods=['POST'])
+def save_image():
+    image = request.files['file']
+    if image:
+        filepath = os.path.join(current_app.root_path, 'static/images/img0.jpg')
+        image.save(filepath)
+        print('success')
+    else:
+        print('error')
+
+    return 'success'
 
 
 @app.route('/dashboard')

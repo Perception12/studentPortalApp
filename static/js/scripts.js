@@ -29,14 +29,14 @@ var formController = (function(){
             return document.querySelector(id).value;
         }
 
-        console.log("This works");
-
         // FORM ELEMENT VALUE SELECTOR
         function selectValue(id) {
             return document.querySelector(id).value;
         }
 
-        console.log("This works");
+        // GET PROFILE PHOTO
+        let image = new FormData();
+        image.append('file', $('#profile-photo')[0].files[0]);
 
         // SELECT INPUT VALUES
         let firstName = selectValue('#first-name');
@@ -51,6 +51,7 @@ var formController = (function(){
         let nextOfKin = selectValue('#nextOfKin');
         let jambScore = selectValue('#jambScore');
 
+        // SENDS STUDENT INFORMATION TO THE SERVER
         $.ajax({
             url: '/student/add',
             type: 'POST',
@@ -78,11 +79,21 @@ var formController = (function(){
             }
         });
 
+
+        // SENDS PROFILE PHOTO TO SERVER
+        $.ajax({
+            url: '/student/photo',
+            type: 'POST',
+            data: image,
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                location.reload();
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
     });
 })();
-
-
-
-    
-
-
