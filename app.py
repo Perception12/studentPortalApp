@@ -43,7 +43,7 @@ def portal():
 @app.route('/student/add', methods=['POST'])
 def add_student():
     req = request.get_json()
-
+    global email
     firstName = req['firstName']
     middleName = req['middleName']
     lastName = req['lastName']
@@ -71,9 +71,11 @@ def add_student():
 
 @app.route('/student/photo', methods=['POST'])
 def save_image():
+    global email
+    photoName = email.split('@')[0]
     image = request.files['file']
     if image:
-        filepath = os.path.join(current_app.root_path, 'static/images/img0.jpg')
+        filepath = os.path.join(current_app.root_path, f'static/images/{photoName}.jpg')
         image.save(filepath)
         print('success')
     else:
