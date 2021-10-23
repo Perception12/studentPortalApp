@@ -52,32 +52,32 @@ var formController = (function(){
         let jambScore = selectValue('#jambScore');
 
         // SENDS STUDENT INFORMATION TO THE SERVER
-        $.ajax({
-            url: '/student/add',
-            type: 'POST',
-            dataType: 'json',
-            data: JSON.stringify({
-                'firstName': firstName,
-                'middleName': middleName,
-                'lastName': lastName,
-                'email': email,
-                'dateOfBirth': dateOfBirth,
-                'gender': gender,
-                'phoneNumber': phoneNumber,
-                'address': address,
-                'state': state,
-                'localGovernment': localGovernment,
-                'nextOfKin': nextOfKin,
-                'jambScore': jambScore
-            }),
-            contentType: 'application/json, charset=UTF-8',
-            success: function(data) {
-                location.reload();
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
+        // $.ajax({
+        //     url: '/student/add',
+        //     type: 'POST',
+        //     dataType: 'json',
+        //     data: JSON.stringify({
+        //         'firstName': firstName,
+        //         'middleName': middleName,
+        //         'lastName': lastName,
+        //         'email': email,
+        //         'dateOfBirth': dateOfBirth,
+        //         'gender': gender,
+        //         'phoneNumber': phoneNumber,
+        //         'address': address,
+        //         'state': state,
+        //         'localGovernment': localGovernment,
+        //         'nextOfKin': nextOfKin,
+        //         'jambScore': jambScore
+        //     }),
+        //     contentType: 'application/json, charset=UTF-8',
+        //     success: function(data) {
+        //         location.reload();
+        //     },
+        //     error: function(err) {
+        //         console.log(err);
+        //     }
+        // });
 
 
         // SENDS PROFILE PHOTO TO SERVER
